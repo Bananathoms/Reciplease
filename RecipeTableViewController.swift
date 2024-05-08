@@ -15,5 +15,7 @@ class RecipeTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
     }
 
+    /// Stores the recipes retrieved from the API.
+    var recipes: [Recipe] = []
 
 }

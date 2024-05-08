@@ -52,7 +52,7 @@
             <objects>
                 <viewController id="SEi-yR-kT8" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WoO-0c-aFu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xQ-LD-aAF" userLabel="Sarch">
@@ -143,7 +143,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="XhD-Su-I5e" kind="show" id="pgZ-Lk-vwj"/>
+                                            <action selector="searchRecipes:" destination="SEi-yR-kT8" eventType="touchUpInside" id="cFf-ym-ID1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -184,6 +184,7 @@
                     <connections>
                         <outlet property="ingredientsTableView" destination="VwU-of-4gd" id="KZV-hG-bTi"/>
                         <outlet property="ingredientsTextField" destination="6Cz-2j-wz5" id="ec1-Me-Tyd"/>
+                        <segue destination="XhD-Su-I5e" kind="show" identifier="ShowRecipes" id="p4O-Y8-1Cd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDd-cr-c9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

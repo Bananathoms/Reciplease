@@ -18,6 +18,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     /// An array to store the ingredients entered by the user.
     var ingredients: [String] = []
+    /// Stores the recipes retrieved from the API.
+    var recipes: [Recipe] = []
     
     /// Sets up the TableView data source, delegate and TextField delegate when the view loads.
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.ingredientsTableView.delegate = self
         self.ingredientsTextField.delegate = self
         
+        // Adds a tap gesture recognizer to dismiss the keyboard when tapping outside the text field.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -51,8 +54,42 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     /// Clears all ingredients from the array and updates the TableView to reflect this change.
     /// - Parameter sender: The button that triggers the action to clear all ingredients.
     @IBAction func clearIngredients(_ sender: UIButton) {
-        ingredients.removeAll() // Vide la liste des ingrédients
-        ingredientsTableView.reloadData() // Rafraîchit la tableView
+        self.ingredients.removeAll() // Vide la liste des ingrédients
+        self.ingredientsTableView.reloadData() // Rafraîchit la tableView
+    }
+    
+    /// Initiates a recipe search based on the entered ingredients. Alerts the user if no ingredients have been entered.
+    /// - Parameter sender: The button that triggers the recipe search.
+    @IBAction func searchRecipes(_ sender: UIButton) {
+        guard !ingredients.isEmpty else {
+            self.showAlert(message: "Please add at least one ingredient before searching.")
+            return
+        }
+
+        let recipeService = RecipeService()
+        recipeService.fetchRecipes(with: ingredients) { [weak self] result in
+            DispatchQueue.main.async { 
+                switch result {
+                case .success(let fetchedRecipes):
+                    print("Found \(fetchedRecipes.count) recipes.")
+                    self?.recipes = fetchedRecipes
+                    self?.performSegue(withIdentifier: "ShowRecipes", sender: self)
+                case .failure(let error):
+                    print("Error fetching recipes: \(error)")
+                    self?.showAlert(message: "Failed to fetch recipes. Please try again.")
+                }
+            }
+        }
+    }
+    
+    /// Prepares for the segue to the RecipeTableViewController, passing the fetched recipes.
+    /// - Parameters:
+    ///   - segue: The segue being prepared for.
+    ///   - sender: The object that initiated the segue.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowRecipes", let destinationVC = segue.destination as? RecipeTableViewController {
+            destinationVC.recipes = self.recipes
+        }
     }
     
     /// Returns the number of rows needed for the TableView, which corresponds to the number of ingredients.
@@ -71,7 +108,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     /// - Returns: A configured cell with an ingredient's name.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
-        cell.textLabel?.text = ingredients[indexPath.row]
+        cell.textLabel?.text = self.ingredients[indexPath.row]
         return cell
     }
 }

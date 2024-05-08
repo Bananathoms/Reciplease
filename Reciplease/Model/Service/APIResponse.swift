@@ -9,6 +9,7 @@ import Foundation
 
 struct APIResponse: Decodable {
     let hits: [Hit]
+    let count: Int
 }
 
 struct Hit: Decodable {
