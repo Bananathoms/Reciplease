@@ -35,7 +35,7 @@
                 <navigationController id="fNp-4T-tuT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="mDy-ad-ck3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="OTe-F1-fkd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="Background"/>
                     </navigationBar>
@@ -196,11 +196,11 @@
             <objects>
                 <tableViewController id="XhD-Su-I5e" customClass="RecipeTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cf9-2d-V0Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="118" id="ikS-i6-TI8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCellIdentifier" rowHeight="118" id="ikS-i6-TI8" customClass="RecipeTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="320" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ikS-i6-TI8" id="EQd-Z9-GoQ">
@@ -216,7 +216,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqz-MB-PIV" userLabel="Info View" customClass="DetailView" customModule="Reciplease" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqz-MB-PIV" userLabel="Info View" customClass="InfoView" customModule="Reciplease" customModuleProvider="target">
                                             <rect key="frame" x="240" y="8" width="64" height="52"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,5K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DC-4Y-Lpn">
@@ -291,6 +291,11 @@
                                         <constraint firstItem="Bqz-MB-PIV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EQd-Z9-GoQ" secondAttribute="leading" id="hRY-dg-GuK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="recipeImage" destination="ktx-cM-Qgl" id="I88-LR-tgo"/>
+                                    <outlet property="recipeInfo" destination="Bqz-MB-PIV" id="fnu-sF-pOI"/>
+                                    <outlet property="recipeNameLabel" destination="6bf-uJ-Pqw" id="UN2-lF-HMt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -794,7 +799,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UuW-hR-MO0"/>
+        <segue reference="RUm-rE-F5n"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Like" width="50" height="50"/>

@@ -19,7 +19,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     /// An array to store the ingredients entered by the user.
     var ingredients: [String] = []
     /// Stores the recipes retrieved from the API.
-    var recipes: [Recipe] = []
+    var recipes: [RecipeResult] = []
     
     /// Sets up the TableView data source, delegate and TextField delegate when the view loads.
     override func viewDidLoad() {
