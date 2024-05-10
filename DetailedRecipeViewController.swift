@@ -15,9 +15,13 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var detailedRecipeInfo: InfoView!
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var directionButton: UIButton!
+    @IBOutlet weak var favButton: UIBarButtonItem!
+    
     
     /// Contains detailed information about the recipe passed from the previous ViewController.
     var recipeDetail: RecipeResult?
+    /// Tracks whether the recipe is marked as a favorite.
+    var isFavorite: Bool = false
     
     /// Sets up the tableView delegates and updates the UI with the recipe details on view load.
     override func viewDidLoad() {
@@ -40,8 +44,19 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
         if let imageUrl = URL(string: recipeDetail.image) {
             self.detailedRecipeImage.loadImage(from: imageUrl)
         }
+        
+        self.updateFavoriteIcon()
 
         self.ingredientsTableView.reloadData()
+    }
+    
+    /// Updates the favorite button icon based on the `isFavorite` state.
+    func updateFavoriteIcon() {
+        if self.isFavorite {
+            self.favButton.image = UIImage(systemName: "star.fill")
+        } else {
+            self.favButton.image = UIImage(systemName: "star")
+        }
     }
 
     /// Returns the number of rows in a section; here it corresponds to the number of ingredients in the recipe.
@@ -65,5 +80,12 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
         if let url = self.recipeDetail?.url, let urlToOpen = URL(string: url) {
             UIApplication.shared.open(urlToOpen)
         }
+    }
+    
+    /// Toggles the favorite state of the recipe when the favorite button is tapped, updating the icon accordingly.
+    @IBAction func favButtonTapped(_ sender: UIBarButtonItem) {
+        self.isFavorite.toggle()
+        self.updateFavoriteIcon()
+
     }
 }

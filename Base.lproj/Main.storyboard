@@ -35,7 +35,7 @@
                 <navigationController id="fNp-4T-tuT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="mDy-ad-ck3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="OTe-F1-fkd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="Background"/>
                     </navigationBar>
@@ -52,7 +52,7 @@
             <objects>
                 <viewController id="SEi-yR-kT8" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WoO-0c-aFu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xQ-LD-aAF" userLabel="Sarch">
@@ -196,7 +196,7 @@
             <objects>
                 <tableViewController id="XhD-Su-I5e" customClass="RecipeTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cf9-2d-V0Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -335,7 +335,7 @@
             <objects>
                 <viewController id="TTz-4Y-rdE" customClass="DetailedRecipeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="05r-xb-l03">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shh-ac-VNM">
@@ -661,13 +661,18 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qUG-EH-OBu">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="7YQ-zv-cAO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="7YQ-zv-cAO">
+                            <connections>
+                                <action selector="favButtonTapped:" destination="TTz-4Y-rdE" id="A8N-Tk-Hpy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailedRecipeImage" destination="3xC-sB-Cxf" id="oqk-OO-3P7"/>
                         <outlet property="detailedRecipeInfo" destination="HSw-0K-gxq" id="KIn-e3-wkE"/>
                         <outlet property="detailedRecipename" destination="up4-El-UJ1" id="LmC-ab-VP6"/>
                         <outlet property="directionButton" destination="gfw-Nf-fsc" id="t26-Zp-ueW"/>
+                        <outlet property="favButton" destination="7YQ-zv-cAO" id="ShA-c9-u3P"/>
                         <outlet property="ingredientsTableView" destination="HHg-9w-Ela" id="L8j-oA-d9E"/>
                     </connections>
                 </viewController>
@@ -680,7 +685,7 @@
             <objects>
                 <tableViewController id="sxP-Uo-ZsP" customClass="RecipeTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8nS-QD-OEY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
