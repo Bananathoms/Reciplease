@@ -35,7 +35,7 @@
                 <navigationController id="fNp-4T-tuT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="mDy-ad-ck3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="OTe-F1-fkd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="Background"/>
                     </navigationBar>
@@ -196,7 +196,7 @@
             <objects>
                 <tableViewController id="XhD-Su-I5e" customClass="RecipeTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cf9-2d-V0Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -305,7 +305,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Kt2-zX-mQb"/>
                     <connections>
-                        <segue destination="TTz-4Y-rdE" kind="show" id="RUm-rE-F5n"/>
+                        <segue destination="TTz-4Y-rdE" kind="show" identifier="ShowDetailedRecipe" id="RUm-rE-F5n"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q85-f5-m8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -330,27 +330,27 @@
             </objects>
             <point key="canvasLocation" x="581" y="791"/>
         </scene>
-        <!--Detailled Recipe View Controller-->
+        <!--Detailed Recipe View Controller-->
         <scene sceneID="qVZ-jF-yJM">
             <objects>
-                <viewController id="TTz-4Y-rdE" customClass="DetailledRecipeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="05r-xb-l03" customClass="DetailRecipeView" customModule="Reciplease" customModuleProvider="target">
+                <viewController id="TTz-4Y-rdE" customClass="DetailedRecipeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="05r-xb-l03">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shh-ac-VNM" customClass="ImageReferenceView" customModule="Reciplease" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shh-ac-VNM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3xC-sB-Cxf">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="up4-El-UJ1">
-                                        <rect key="frame" x="137.5" y="115" width="45" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="up4-El-UJ1">
+                                        <rect key="frame" x="136" y="115" width="48" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSw-0K-gxq" userLabel="Info View" customClass="DetailView" customModule="Reciplease" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSw-0K-gxq" userLabel="Info View" customClass="InfoView" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="250" y="8" width="62" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,5K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9x-AC-hqC">
@@ -491,10 +491,6 @@
                                         <exclude reference="hhU-sQ-mSt"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <outlet property="imageRecipe" destination="3xC-sB-Cxf" id="vOj-uX-sFw"/>
-                                    <outlet property="labelName" destination="up4-El-UJ1" id="Wwo-uq-gcu"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNg-yk-sRE" userLabel="ingredientList">
                                 <rect key="frame" x="0.0" y="144" width="320" height="311"/>
@@ -513,7 +509,7 @@
                                         </constraints>
                                         <color key="sectionIndexBackgroundColor" red="0.21627253290000001" green="0.20005562900000001" blue="0.19573080540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellCustomRecipe" id="Xh6-J2-fnq">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IngredientCell" id="Xh6-J2-fnq">
                                                 <rect key="frame" x="0.0" y="50" width="320" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xh6-J2-fnq" id="6Ec-9v-PEe">
@@ -546,7 +542,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="getDirention:" destination="05r-xb-l03" eventType="touchUpInside" id="Uaj-Ha-WWS"/>
+                                            <action selector="directionButtonTapped:" destination="TTz-4Y-rdE" eventType="touchUpInside" id="UJy-Oz-wec"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -663,18 +659,16 @@
                                 <include reference="d61-hs-Iqc"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="buttonGetDirection" destination="gfw-Nf-fsc" id="zbG-Wh-5Dx"/>
-                            <outlet property="imageReferenceTitle" destination="shh-ac-VNM" id="MNY-fP-ZCb"/>
-                            <outlet property="labelIngredient" destination="loZ-Xp-3C4" id="cxX-k4-a7O"/>
-                            <outlet property="tableViewIngredient" destination="HHg-9w-Ela" id="X82-BN-jSY"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="qUG-EH-OBu">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="7YQ-zv-cAO"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="detailViewRecipe" destination="05r-xb-l03" id="1Bq-6x-cgL"/>
+                        <outlet property="detailedRecipeImage" destination="3xC-sB-Cxf" id="oqk-OO-3P7"/>
+                        <outlet property="detailedRecipeInfo" destination="HSw-0K-gxq" id="KIn-e3-wkE"/>
+                        <outlet property="detailedRecipename" destination="up4-El-UJ1" id="LmC-ab-VP6"/>
+                        <outlet property="directionButton" destination="gfw-Nf-fsc" id="t26-Zp-ueW"/>
+                        <outlet property="ingredientsTableView" destination="HHg-9w-Ela" id="L8j-oA-d9E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1E-aW-Unw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,7 +784,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorite" id="bkU-n7-ru3" userLabel="Favorite "/>
                     <connections>
-                        <segue destination="TTz-4Y-rdE" kind="show" id="UuW-hR-MO0"/>
+                        <segue destination="TTz-4Y-rdE" kind="show" identifier="ShowFavoriteDetailedRecipe" id="UuW-hR-MO0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yux-Zu-YmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

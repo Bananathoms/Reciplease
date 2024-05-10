@@ -56,4 +56,17 @@ class RecipeTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowDetailedRecipe", sender: indexPath)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailedRecipe" {
+            if let destinationVC = segue.destination as? DetailedRecipeViewController,
+               let indexPath = sender as? IndexPath {
+                destinationVC.recipeDetail = recipes[indexPath.row]
+            }
+        }
+    }
 }
