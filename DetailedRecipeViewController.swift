@@ -6,6 +6,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 /// This ViewController handles the display of detailed information about a specific recipe.
 class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -23,6 +24,10 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
     /// Tracks whether the recipe is marked as a favorite.
     var isFavorite: Bool = false
     
+    var context: NSManagedObjectContext {
+        return CoreDataStack.shared.context
+    }
+    
     /// Sets up the tableView delegates and updates the UI with the recipe details on view load.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +35,29 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
         self.ingredientsTableView.dataSource = self
         self.ingredientsTableView.delegate = self
 
+        self.checkIfRecipeIsFavorite()
         self.updateUI()
+    }
+    
+    /// Checks if the current recipe is marked as a favorite in the CoreData database.
+    func checkIfRecipeIsFavorite() {
+        guard let recipe = self.recipeDetail else { return }
+
+        let fetchRequest: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "url == %@", recipe.url)
+
+        if let result = try? context.fetch(fetchRequest), result.count > 0 {
+            self.isFavorite = true
+        } else {
+            self.isFavorite = false
+        }
+
+        self.updateFavoriteIcon()
     }
     
     /// Updates the UI elements with the data from `recipeDetail`. It populates the image, name, and other recipe info.
     func updateUI() {
-        guard let recipeDetail = recipeDetail else { return }
+        guard let recipeDetail = self.recipeDetail else { return }
         
         self.detailedRecipename.text = recipeDetail.label
         self.detailedRecipeInfo.labelTimeRecipe.text = "\(recipeDetail.totalTime) min"
@@ -44,8 +66,6 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
         if let imageUrl = URL(string: recipeDetail.image) {
             self.detailedRecipeImage.loadImage(from: imageUrl)
         }
-        
-        self.updateFavoriteIcon()
 
         self.ingredientsTableView.reloadData()
     }
@@ -84,8 +104,15 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
     
     /// Toggles the favorite state of the recipe when the favorite button is tapped, updating the icon accordingly.
     @IBAction func favButtonTapped(_ sender: UIBarButtonItem) {
+        guard let recipe = self.recipeDetail else { return }
+
+        if isFavorite {
+            CoreDataHelper.shared.removeFavorite(recipeUrl: recipe.url)
+        } else {
+            CoreDataHelper.shared.addFavorite(recipe: recipe)
+        }
+
         self.isFavorite.toggle()
         self.updateFavoriteIcon()
-
     }
 }
