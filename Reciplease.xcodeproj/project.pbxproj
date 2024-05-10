@@ -21,6 +21,8 @@
 		DE366A672BEBF56A00563AB7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A662BEBF56A00563AB7 /* RecipeTableViewCell.swift */; };
 		DE366A692BEBF92100563AB7 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A682BEBF92100563AB7 /* InfoView.swift */; };
 		DE366A6D2BEC423D00563AB7 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A6C2BEC423D00563AB7 /* Extension+UIImageView.swift */; };
+		DE366A7A2BEE3B0800563AB7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE366A792BEE3B0800563AB7 /* CoreData.framework */; };
+		DE366A7D2BEE3B2000563AB7 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE366A7B2BEE3B2000563AB7 /* Reciplease.xcdatamodeld */; };
 		DE586B172BDB460F00BC7848 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE586B162BDB460F00BC7848 /* AppDelegate.swift */; };
 		DE586B192BDB460F00BC7848 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE586B182BDB460F00BC7848 /* SceneDelegate.swift */; };
 		DE586B1E2BDB460F00BC7848 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE586B1C2BDB460F00BC7848 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		DE366A662BEBF56A00563AB7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		DE366A682BEBF92100563AB7 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DE366A6C2BEC423D00563AB7 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
+		DE366A792BEE3B0800563AB7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DE366A7C2BEE3B2000563AB7 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		DE586B132BDB460F00BC7848 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE586B162BDB460F00BC7848 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE586B182BDB460F00BC7848 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				533D02603893DB1E15219C11 /* Pods_Reciplease.framework in Frameworks */,
+				DE366A7A2BEE3B0800563AB7 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 		94A292DCF741237956308E46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE366A792BEE3B0800563AB7 /* CoreData.framework */,
 				20279A10F71790624D9F6D05 /* Pods_Reciplease.framework */,
 			);
 			name = Frameworks;
@@ -149,6 +155,7 @@
 			children = (
 				DE366A4F2BEA8E3F00563AB7 /* Ingredient.swift */,
 				DE366A4C2BEA8CF800563AB7 /* Service */,
+				DE366A7B2BEE3B2000563AB7 /* Reciplease.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +421,7 @@
 				DE366A642BEBECF700563AB7 /* Extension+UIViewController.swift in Sources */,
 				DE366A442BDC050300563AB7 /* DetailedRecipeViewController.swift in Sources */,
 				DE366A522BEA901500563AB7 /* RecipeQuery.swift in Sources */,
+				DE366A7D2BEE3B2000563AB7 /* Reciplease.xcdatamodeld in Sources */,
 				DE366A412BDC04CA00563AB7 /* RecipeTableViewController.swift in Sources */,
 				DE366A692BEBF92100563AB7 /* InfoView.swift in Sources */,
 				DE366A4B2BEA8CD400563AB7 /* RecipeResult.swift in Sources */,
@@ -761,6 +769,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE366A7B2BEE3B2000563AB7 /* Reciplease.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE366A7C2BEE3B2000563AB7 /* Reciplease.xcdatamodel */,
+			);
+			currentVersion = DE366A7C2BEE3B2000563AB7 /* Reciplease.xcdatamodel */;
+			name = Reciplease.xcdatamodeld;
+			path = /Users/bananathoms/Documents/GitHub/Repo/Reciplease/Reciplease/Model/Reciplease.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DE586B0B2BDB460F00BC7848 /* Project object */;
 }
