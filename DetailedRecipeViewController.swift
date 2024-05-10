@@ -33,17 +33,14 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
     func updateUI() {
         guard let recipeDetail = recipeDetail else { return }
         
-        // Mise à jour des détails de la recette
         self.detailedRecipename.text = recipeDetail.label
         self.detailedRecipeInfo.labelTimeRecipe.text = "\(recipeDetail.totalTime) min"
         self.detailedRecipeInfo.labelLike.text = "\(recipeDetail.yield)"
 
-        // Charger l'image à partir de l'URL si possible
         if let imageUrl = URL(string: recipeDetail.image) {
             self.detailedRecipeImage.loadImage(from: imageUrl)
         }
 
-        // Recharger les données de la tableView
         self.ingredientsTableView.reloadData()
     }
 
