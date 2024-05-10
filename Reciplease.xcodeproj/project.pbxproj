@@ -25,6 +25,8 @@
 		DE366A7D2BEE3B2000563AB7 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE366A7B2BEE3B2000563AB7 /* Reciplease.xcdatamodeld */; };
 		DE366A852BEE7AD400563AB7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A842BEE7AD400563AB7 /* CoreDataStack.swift */; };
 		DE366A872BEE7E0300563AB7 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A862BEE7E0300563AB7 /* CoreDataHelper.swift */; };
+		DE366A892BEE8A9200563AB7 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A882BEE8A9200563AB7 /* FavoriteTableViewCell.swift */; };
+		DE366A8B2BEE958B00563AB7 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE366A8A2BEE958B00563AB7 /* Extension+Notification.swift */; };
 		DE586B172BDB460F00BC7848 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE586B162BDB460F00BC7848 /* AppDelegate.swift */; };
 		DE586B192BDB460F00BC7848 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE586B182BDB460F00BC7848 /* SceneDelegate.swift */; };
 		DE586B1E2BDB460F00BC7848 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE586B1C2BDB460F00BC7848 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		DE366A7C2BEE3B2000563AB7 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		DE366A842BEE7AD400563AB7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		DE366A862BEE7E0300563AB7 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		DE366A882BEE8A9200563AB7 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		DE366A8A2BEE958B00563AB7 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		DE586B132BDB460F00BC7848 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE586B162BDB460F00BC7848 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE586B182BDB460F00BC7848 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			children = (
 				DE586B1C2BDB460F00BC7848 /* Main.storyboard */,
 				DE366A662BEBF56A00563AB7 /* RecipeTableViewCell.swift */,
+				DE366A882BEE8A9200563AB7 /* FavoriteTableViewCell.swift */,
 				DE366A682BEBF92100563AB7 /* InfoView.swift */,
 			);
 			name = View;
@@ -147,8 +152,8 @@
 			children = (
 				DE366A3A2BDC03A000563AB7 /* SearchViewController.swift */,
 				DE366A402BDC04CA00563AB7 /* RecipeTableViewController.swift */,
-				DE366A432BDC050300563AB7 /* DetailedRecipeViewController.swift */,
 				DE366A472BE94CAE00563AB7 /* FavoriteTableViewController.swift */,
+				DE366A432BDC050300563AB7 /* DetailedRecipeViewController.swift */,
 			);
 			name = ViewController;
 			path = ..;
@@ -180,6 +185,7 @@
 			children = (
 				DE366A632BEBECF700563AB7 /* Extension+UIViewController.swift */,
 				DE366A6C2BEC423D00563AB7 /* Extension+UIImageView.swift */,
+				DE366A8A2BEE958B00563AB7 /* Extension+Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -426,6 +432,7 @@
 				DE586B172BDB460F00BC7848 /* AppDelegate.swift in Sources */,
 				DE366A482BE94CAE00563AB7 /* FavoriteTableViewController.swift in Sources */,
 				DE366A502BEA8E3F00563AB7 /* Ingredient.swift in Sources */,
+				DE366A892BEE8A9200563AB7 /* FavoriteTableViewCell.swift in Sources */,
 				DE366A672BEBF56A00563AB7 /* RecipeTableViewCell.swift in Sources */,
 				DE366A3B2BDC03A000563AB7 /* SearchViewController.swift in Sources */,
 				DE586B192BDB460F00BC7848 /* SceneDelegate.swift in Sources */,
@@ -440,6 +447,7 @@
 				DE366A7D2BEE3B2000563AB7 /* Reciplease.xcdatamodeld in Sources */,
 				DE366A412BDC04CA00563AB7 /* RecipeTableViewController.swift in Sources */,
 				DE366A692BEBF92100563AB7 /* InfoView.swift in Sources */,
+				DE366A8B2BEE958B00563AB7 /* Extension+Notification.swift in Sources */,
 				DE366A4B2BEA8CD400563AB7 /* RecipeResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

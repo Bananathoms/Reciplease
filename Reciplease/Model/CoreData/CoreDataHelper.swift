@@ -41,6 +41,7 @@ class CoreDataHelper {
         } catch {
             print("Failed to save favorite: \(error)")
         }
+        NotificationCenter.default.post(name: .didUpdateFavorites, object: nil)
     }
 
     /// Removes a favorite recipe from CoreData.
@@ -53,6 +54,7 @@ class CoreDataHelper {
             context.delete(objectToDelete)
             saveContext()
         }
+        NotificationCenter.default.post(name: .didUpdateFavorites, object: nil)
     }
 
     /// Fetches all favorite recipes from CoreData.
@@ -60,7 +62,9 @@ class CoreDataHelper {
     func fetchFavorites() -> [FavoriteRecipe] {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         do {
-            return try self.context.fetch(request)
+            let results = try self.context.fetch(request)
+            print("Fetched \(results.count) favorites")
+            return results
         } catch {
             print("Error fetching favorite recipes: \(error)")
             return []
