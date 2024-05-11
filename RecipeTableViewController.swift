@@ -34,8 +34,16 @@ class RecipeTableViewController: UITableViewController {
     ///   - section: The index number of the section.
     /// - Returns: The number of rows in the section.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Le nombre de lignes est égal au nombre de recettes
         return recipes.count
+    }
+    
+    /// Determines the height of rows.
+    /// - Parameters:
+    ///   - tableView: The table view requesting this information.
+    ///   - indexPath: An index path locating the row in the table view.
+    /// - Returns: the height of rows.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     /// Asks the data source for a cell to insert in a particular location of the table view.

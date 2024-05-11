@@ -63,6 +63,15 @@ class FavoriteTableViewController: UITableViewController {
         return cell
     }
     
+    /// Determines the height of rows.
+    /// - Parameters:
+    ///   - tableView: The table view requesting this information.
+    ///   - indexPath: An index path locating the row in the table view.
+    /// - Returns: the height of rows.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
     /// Tells the delegate that the specified row is now selected and performs a segue.
     /// - Parameters:
     ///   - tableView: A table-view object informing the delegate about the new row selection.

@@ -13,4 +13,16 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteRecipeImage: UIImageView!
     @IBOutlet weak var favoriteRecipeNameLabel: UILabel!
     @IBOutlet weak var favoriteRecipeInfo: InfoView!
+    
+    /// Prepares the cell after it has been loaded from the Interface Builder.
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.favoriteRecipeImage.addBlackGradientLayer(frame: favoriteRecipeImage.bounds)
+    }
+
+    /// Updates the layout of the subviews when the cell's view undergoes layout changes.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.favoriteRecipeImage.layer.sublayers?.first(where: { $0 is CAGradientLayer })?.frame = self.favoriteRecipeImage.bounds
+    }
 }
