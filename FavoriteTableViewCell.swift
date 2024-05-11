@@ -12,12 +12,13 @@ import UIKit
 class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteRecipeImage: UIImageView!
     @IBOutlet weak var favoriteRecipeNameLabel: UILabel!
+    @IBOutlet weak var favoriteRecipeIngredientsLabel: UILabel!
     @IBOutlet weak var favoriteRecipeInfo: InfoView!
     
     /// Prepares the cell after it has been loaded from the Interface Builder.
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.favoriteRecipeImage.addBlackGradientLayer(frame: favoriteRecipeImage.bounds)
+        self.favoriteRecipeImage.addGradientLayer(frame: favoriteRecipeImage.bounds, endColor: .black)
     }
 
     /// Updates the layout of the subviews when the cell's view undergoes layout changes.

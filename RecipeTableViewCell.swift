@@ -12,12 +12,13 @@ import UIKit
 class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeIngredientsLabel: UILabel!
     @IBOutlet weak var recipeInfo: InfoView!
     
     /// Prepares the cell after it has been loaded from the Interface Builder.
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.recipeImage.addBlackGradientLayer(frame: recipeImage.bounds)
+        self.recipeImage.addGradientLayer(frame: recipeImage.bounds, endColor: .black)
     }
     
     /// Updates the layout of the subviews when the cell's view undergoes layout changes.

@@ -52,6 +52,7 @@ class FavoriteTableViewController: UITableViewController {
 
         let recipe = self.favoriteRecipes[indexPath.row]
         cell.favoriteRecipeNameLabel.text = recipe.label
+        cell.favoriteRecipeIngredientsLabel.text = recipe.ingredientLines
         cell.favoriteRecipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
         cell.favoriteRecipeInfo.labelLike.text = "\(recipe.yield)"
 

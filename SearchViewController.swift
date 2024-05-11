@@ -107,8 +107,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     ///   - indexPath: The index path specifying the location of the cell.
     /// - Returns: A configured cell with an ingredient's name.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
-        cell.textLabel?.text = self.ingredients[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCellIdentifier", for: indexPath) as? IngredientTableViewCell else {
+            fatalError("The dequeued cell is not an instance of IngredientTableViewCell.")
+        }
+        cell.ingredientNameLabel.text = "- \(self.ingredients[indexPath.row])"
         return cell
     }
 }

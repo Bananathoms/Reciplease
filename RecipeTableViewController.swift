@@ -58,6 +58,7 @@ class RecipeTableViewController: UITableViewController {
 
         let recipe = recipes[indexPath.row]
         cell.recipeNameLabel.text = recipe.label
+        cell.recipeIngredientsLabel.text = recipe.ingredientLines.joined()
         cell.recipeImage.loadImage(from: URL(string: recipe.image))
         cell.recipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
         cell.recipeInfo.labelLike.text = "\(recipe.yield)"
