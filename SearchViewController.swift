@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var ingredients: [String] = []
     /// Stores the recipes retrieved from the API.
     var recipes: [RecipeResult] = []
+    var nextPageURL: String?
     
     /// Sets up the TableView data source, delegate and TextField delegate when the view loads.
     override func viewDidLoad() {
@@ -37,6 +38,24 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     /// Hide the keyboard
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    /// Loads recipes from the Edamam recipe API based on the list of ingredients provided.
+    func loadRecipes() {
+        RecipeService().fetchRecipes(with: ingredients) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    let (newRecipes, nextPageURL) = data
+                    self?.recipes.append(contentsOf: newRecipes)  // Ajouter les recettes à la liste existante
+                    self?.nextPageURL = nextPageURL  // Stocker l'URL de la page suivante
+                    self?.performSegue(withIdentifier: "ShowRecipes", sender: self)
+                case .failure(let error):
+                    print("Error fetching recipes: \(error)")
+                    self?.showAlert(message: "Failed to fetch recipes. Please try again.")
+                }
+            }
+        }
     }
     
     /// Adds the ingredient from the TextField to the ingredients array and updates the TableView and clears the TextField after the ingredient is added.
@@ -65,21 +84,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             self.showAlert(message: "Please add at least one ingredient before searching.")
             return
         }
-
-        let recipeService = RecipeService()
-        recipeService.fetchRecipes(with: ingredients) { [weak self] result in
-            DispatchQueue.main.async { 
-                switch result {
-                case .success(let fetchedRecipes):
-                    print("Found \(fetchedRecipes.count) recipes.")
-                    self?.recipes = fetchedRecipes
-                    self?.performSegue(withIdentifier: "ShowRecipes", sender: self)
-                case .failure(let error):
-                    print("Error fetching recipes: \(error)")
-                    self?.showAlert(message: "Failed to fetch recipes. Please try again.")
-                }
-            }
-        }
+        self.loadRecipes()
     }
     
     /// Prepares for the segue to the RecipeTableViewController, passing the fetched recipes.

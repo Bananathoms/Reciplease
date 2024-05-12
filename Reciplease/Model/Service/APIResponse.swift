@@ -16,10 +16,12 @@ struct APIResponse: Decodable {
     let _links: Links?
 }
 
+/// Represents links related to pagination in the API response.
 struct Links: Decodable {
     let next: NextPage?
 }
 
+/// Detailed information about a pagination link.
 struct NextPage: Decodable {
     let href: String
 }

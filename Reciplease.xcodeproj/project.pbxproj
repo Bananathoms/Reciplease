@@ -175,9 +175,9 @@
 		DE366A4C2BEA8CF800563AB7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DE366A4D2BEA8D1600563AB7 /* RecipeService.swift */,
 				DE366A532BEA905B00563AB7 /* APIResponse.swift */,
 				DE366A4A2BEA8CD400563AB7 /* RecipeResult.swift */,
-				DE366A4D2BEA8D1600563AB7 /* RecipeService.swift */,
 				DE366A512BEA901500563AB7 /* RecipeQuery.swift */,
 			);
 			path = Service;
