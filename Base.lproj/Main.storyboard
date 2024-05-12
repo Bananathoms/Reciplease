@@ -52,7 +52,7 @@
             <objects>
                 <viewController id="SEi-yR-kT8" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WoO-0c-aFu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xQ-LD-aAF" userLabel="Sarch">
@@ -322,6 +322,7 @@
                                 <connections>
                                     <outlet property="recipeImage" destination="ktx-cM-Qgl" id="I88-LR-tgo"/>
                                     <outlet property="recipeInfo" destination="Bqz-MB-PIV" id="fnu-sF-pOI"/>
+                                    <outlet property="recipeIngredientsLabel" destination="3Cw-KR-qwQ" id="Eqm-Ej-SnP"/>
                                     <outlet property="recipeNameLabel" destination="6bf-uJ-Pqw" id="UN2-lF-HMt"/>
                                 </connections>
                             </tableViewCell>
