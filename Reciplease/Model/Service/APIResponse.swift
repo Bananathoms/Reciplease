@@ -9,8 +9,19 @@ import Foundation
 
 /// Represents the entire response from the recipe API.
 struct APIResponse: Decodable {
-    let hits: [Hit]
+    let from: Int
+    let to: Int
     let count: Int
+    let hits: [Hit]
+    let _links: Links?
+}
+
+struct Links: Decodable {
+    let next: NextPage?
+}
+
+struct NextPage: Decodable {
+    let href: String
 }
 
 /// A structure used to model the individual elements in the `hits` array of the `APIResponse`.
