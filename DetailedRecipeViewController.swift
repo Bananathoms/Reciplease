@@ -66,7 +66,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource, UIT
         
         self.detailedRecipename.text = recipeDetail.label
         self.detailedRecipeInfo.labelTimeRecipe.text = "\(recipeDetail.totalTime) min"
-        self.detailedRecipeInfo.labelLike.text = "\(recipeDetail.yield)"
+        self.detailedRecipeInfo.labelLike.text = "2,5k"
         
         if let imageUrl = URL(string: recipeDetail.image) {
             self.detailedRecipeImage.loadImage(from: imageUrl)

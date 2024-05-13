@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     /// Stores the recipes retrieved from the API.
     var recipes: [RecipeResult] = []
     var nextPageURL: String?
+    let recipeService = RecipeService()
     
     /// Sets up the TableView data source, delegate and TextField delegate when the view loads.
     override func viewDidLoad() {
@@ -42,17 +43,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     /// Loads recipes from the Edamam recipe API based on the list of ingredients provided.
     func loadRecipes() {
-        RecipeService().fetchRecipes(with: ingredients) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    let (newRecipes, nextPageURL) = data
-                    self?.recipes.append(contentsOf: newRecipes)  // Ajouter les recettes à la liste existante
-                    self?.nextPageURL = nextPageURL  // Stocker l'URL de la page suivante
-                    self?.performSegue(withIdentifier: "ShowRecipes", sender: self)
-                case .failure(let error):
-                    print("Error fetching recipes: \(error)")
-                    self?.showAlert(message: "Failed to fetch recipes. Please try again.")
+        if let searchUrl = self.recipeService.createSearchUrl(with: ingredients) {
+            self.recipeService.fetchRecipes(from: searchUrl) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let (newRecipes, nextPageURL)):
+                        self?.recipes.append(contentsOf: newRecipes)
+                        self?.nextPageURL = nextPageURL
+                        self?.performSegue(withIdentifier: "ShowRecipes", sender: self)
+                    case .failure(let error):
+                        print("Error fetching recipes: \(error)")
+                        self?.showAlert(message: "Failed to fetch recipes. Please try again.")
+                    }
                 }
             }
         }
@@ -94,6 +96,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowRecipes", let destinationVC = segue.destination as? RecipeTableViewController {
             destinationVC.recipes = self.recipes
+            destinationVC.nextPageURL = self.nextPageURL
         }
     }
     

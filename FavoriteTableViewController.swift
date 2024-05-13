@@ -102,7 +102,6 @@ class FavoriteTableViewController: UITableViewController {
             label: favorite.label ?? "",
             image: favorite.image ?? "",
             url: favorite.url ?? "",
-            yield: Int(favorite.yield),
             ingredientLines: favorite.ingredientLines?.components(separatedBy: ", ") ?? [],
             totalTime: Int(favorite.totalTime)
         )

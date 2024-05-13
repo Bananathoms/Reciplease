@@ -14,25 +14,26 @@ class RecipeService {
     private let apiKey = "a7e8a98d74d018d5e4b6cf3dfa7e89a5" /// The application ID for API access.
     private let appId = "6c8e05e9" /// The API key for authentication with the recipe service.
     
-    ///Fetches recipes based on a list of ingredients.
-    /// - Parameters:
-    ///   - ingredients: A list of ingredients used as query parameters to fetch recipes.
-    ///   - completion: A completion handler that returns either a tuple containing an array of `RecipeResult` and an optional next page URL, or an error if the request fails.
-    func fetchRecipes(with ingredients: [String], completion: @escaping (Result<([RecipeResult], String?), Error>) -> Void) {
-        let ingredientsQuery = ingredients.joined(separator: ",")
-        let queryParams: [String: String] = [
-            "q": ingredientsQuery,
-            "type": "public",
-            "app_id": appId,
-            "app_key": apiKey
+    /// Creates a search URL for fetching recipes based on the provided ingredients.
+    /// - Parameter ingredients: The list of ingredients to include in the search.
+    /// - Returns: A fully formed URL ready for making a network request.
+    func createSearchUrl(with ingredients: [String]) -> URL? {
+        var components = URLComponents(string: baseURL)
+        components?.queryItems = [
+            URLQueryItem(name: "q", value: ingredients.joined(separator: ",")),
+            URLQueryItem(name: "app_id", value: appId),
+            URLQueryItem(name: "app_key", value: apiKey),
+            URLQueryItem(name: "type", value: "public")
         ]
-        /// Ensure the URL is valid before attempting to make a network request.
-        guard let url = URL(string: baseURL) else {
-            completion(.failure(NSError(domain: "", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
-            return
-        }
-        /// Perform the network request to fetch recipes.
-        AF.request(url, method: .get, parameters: queryParams, encoder: URLEncodedFormParameterEncoder.default).responseDecodable(of: APIResponse.self) { response in
+        return components?.url
+    }
+    
+    /// Fetches recipes from a given URL and handles the network response.
+    /// - Parameters:
+    ///   - url: The URL from which to fetch the recipes.
+    ///   - completion: A completion handler that returns either a tuple containing an array of `RecipeResult` and an optional next page URL, or an error if the request fails.
+    func fetchRecipes(from url: URL, completion: @escaping (Result<([RecipeResult], String?), Error>) -> Void) {
+        AF.request(url, method: .get).responseDecodable(of: APIResponse.self) { response in
             switch response.result {
             case .success(let apiResponse):
                 let recipes = apiResponse.hits.map { $0.recipe }
@@ -43,4 +44,5 @@ class RecipeService {
             }
         }
     }
+
 }

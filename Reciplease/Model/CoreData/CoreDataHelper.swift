@@ -33,7 +33,6 @@ class CoreDataHelper {
         newFavorite.image = recipe.image
         newFavorite.url = recipe.url
         newFavorite.totalTime = Int16(recipe.totalTime)
-        newFavorite.yield = Int16(recipe.yield)
         newFavorite.ingredientLines = recipe.ingredientLines.joined(separator: ", ")
 
         do {

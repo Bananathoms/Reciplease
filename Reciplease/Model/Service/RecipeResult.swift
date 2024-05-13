@@ -12,7 +12,6 @@ struct RecipeResult: Decodable {
     var label: String /// The name or title of the recipe.
     var image: String /// URL string pointing to the image of the recipe.
     var url: String /// URL string linking to the detailed recipe page.
-    var yield: Int /// The number of servings the recipe yields.
     var ingredientLines: [String] /// A list of ingredients used in the recipe.
     var totalTime: Int /// The total time required to prepare and cook the recipe, measured in minutes.
 }
