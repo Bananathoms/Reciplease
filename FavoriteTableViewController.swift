@@ -54,7 +54,7 @@ class FavoriteTableViewController: UITableViewController {
         cell.favoriteRecipeNameLabel.text = recipe.label
         cell.favoriteRecipeIngredientsLabel.text = recipe.ingredientLines
         cell.favoriteRecipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
-        cell.favoriteRecipeInfo.labelLike.text = "\(recipe.yield)"
+        cell.favoriteRecipeInfo.labelLike.text = "2,5K"
 
         if let imageUrl = URL(string: recipe.image ?? "defaultImageUrl") {
             cell.favoriteRecipeImage.loadImage(from: imageUrl)
