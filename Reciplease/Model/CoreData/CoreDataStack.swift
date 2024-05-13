@@ -10,7 +10,7 @@ import CoreData
 
 /// Manages the Core Data stack for the Reciplease application.
 class CoreDataStack {
-    static let shared = CoreDataStack()
+    static var shared = CoreDataStack()
 
     init() {}
 
