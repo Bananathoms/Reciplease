@@ -10,4 +10,8 @@ target 'Reciplease' do
 
   pod 'Alamofire'
 
+  target 'RecipleaseTests' do
+    inherit! :search_paths
+  end
+
 end

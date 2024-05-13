@@ -117,7 +117,7 @@ class RecipeTableViewController: UITableViewController {
     ///   - indexPath: The index path locating the row in the table view.
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == recipes.count - 1 {
-            if let nextPage = nextPageURL, !isLoading {
+            if let _ = nextPageURL, !isLoading {
                 self.isLoading = true
                 self.loadMoreRecipes()
             }
