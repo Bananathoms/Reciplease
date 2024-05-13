@@ -17,7 +17,6 @@ class CoreDataHelperTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        // Initialiser le mock core data stack
         mockCoreDataStack = MockCoreDataStack()
         CoreDataStack.shared = mockCoreDataStack 
         
