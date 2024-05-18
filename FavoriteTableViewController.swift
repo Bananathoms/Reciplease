@@ -14,6 +14,7 @@ class FavoriteTableViewController: UITableViewController {
 
     /// Array to store favorite recipes fetched from CoreData.
     var favoriteRecipes: [FavoriteRecipe] = []
+    @IBOutlet weak var emptyFavLabel: UILabel!
     
     /// Sets up the view controller with necessary data loading and notification observation for updates.
     override func viewDidLoad() {
@@ -29,6 +30,12 @@ class FavoriteTableViewController: UITableViewController {
     @objc func loadFavoriteRecipes() {
         self.favoriteRecipes = CoreDataHelper.shared.fetchFavorites()
         tableView.reloadData()
+        
+        if self.favoriteRecipes.isEmpty{
+            self.emptyFavLabel.isHidden = false
+        } else {
+            self.emptyFavLabel.isHidden = true
+        }
     }
     
     /// Returns the number of rows in the section, corresponding to the number of favorite recipes.

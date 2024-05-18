@@ -29,11 +29,11 @@
             </objects>
             <point key="canvasLocation" x="82" y="-44"/>
         </scene>
-        <!--Search-->
+        <!--Navigation Controller-->
         <scene sceneID="NNJ-Ah-Xk2">
             <objects>
                 <navigationController id="fNp-4T-tuT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="mDy-ad-ck3"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="mDy-ad-ck3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="OTe-F1-fkd">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -339,13 +339,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q85-f5-m8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-384.375" y="2359.8591549295775"/>
+            <point key="canvasLocation" x="-386" y="2401"/>
         </scene>
-        <!--Favorite-->
+        <!--Navigation Controller-->
         <scene sceneID="a00-hU-6In">
             <objects>
                 <navigationController id="knt-so-6ho" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite" id="9EY-Fv-o0S"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="9EY-Fv-o0S"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="Gu2-R1-lgQ">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -733,6 +733,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no favorite recipes. To add favorites, find a recipe and tap the star icon." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LtW-xl-QlF">
+                            <rect key="frame" x="0.0" y="198" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCellIdentifier" rowHeight="120" id="Jo9-HS-tKi" customClass="FavoriteTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="320" height="120"/>
@@ -850,6 +857,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorite" id="bkU-n7-ru3" userLabel="Favorite "/>
                     <connections>
+                        <outlet property="emptyFavLabel" destination="LtW-xl-QlF" id="3zD-tN-LWg"/>
                         <segue destination="TTz-4Y-rdE" kind="show" identifier="ShowFavoriteDetailedRecipe" id="UuW-hR-MO0"/>
                     </connections>
                 </tableViewController>

@@ -62,7 +62,6 @@ class CoreDataHelper {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
         do {
             let results = try self.context.fetch(request)
-            print("Fetched \(results.count) favorites")
             return results
         } catch {
             print("Error fetching favorite recipes: \(error)")

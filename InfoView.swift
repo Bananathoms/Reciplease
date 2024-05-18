@@ -17,18 +17,15 @@ class InfoView: UIView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupAppearance()
+        self.setupAppearance()
     }
 
     private func setupAppearance() {
-        // Arrondir les coins
-        self.layer.cornerRadius = 8 // Ajustez cette valeur pour obtenir l'arrondi désiré
+        self.layer.cornerRadius = 8
         
-        // Ajouter une bordure
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.white.cgColor // Définir la couleur de la bordure ici
+        self.layer.borderColor = UIColor.white.cgColor
 
-        // Pour s'assurer que l'arrondi s'applique correctement
         self.layer.masksToBounds = true
     }
 }
