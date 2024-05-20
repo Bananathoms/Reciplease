@@ -11,14 +11,31 @@ import UIKit
 extension UIImageView {
     
     /// Loads an image from a specified URL and sets it to the UIImageView.
-    /// - Parameter url: Optional URL from which to fetch the image.
-    func loadImage(from url: URL?) {
+    /// - Parameters:
+    ///   - url: The URL from which to fetch the image.
+    ///   - placeholder: An optional placeholder image to be displayed while the image is being downloaded.
+    func loadImage(from url: URL?, placeholder: UIImage? = nil) {
         guard let url = url else { return }
+        
+        let cacheKey = url.lastPathComponent
+        
+        if let cachedImage = CoreDataHelper.shared.loadImageFromDiskWith(fileName: cacheKey) {
+            self.image = cachedImage
+            return
+        }
+        
+        if let placeholder = placeholder {
+            self.image = placeholder
+        }
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil, let image = UIImage(data: data) else {
                 print("Failed to load image from URL: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
+            
+            CoreDataHelper.shared.saveImage(image: image, fileName: cacheKey)
+            
             DispatchQueue.main.async {
                 self.image = image
             }

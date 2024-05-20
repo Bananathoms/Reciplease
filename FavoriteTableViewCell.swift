@@ -26,4 +26,18 @@ class FavoriteTableViewCell: UITableViewCell {
         super.layoutSubviews()
         self.favoriteRecipeImage.layer.sublayers?.first(where: { $0 is CAGradientLayer })?.frame = self.favoriteRecipeImage.bounds
     }
+    
+    /// Configures the cell with the favorite recipe data and loads the image from disk if available.
+    func configure(with recipe: FavoriteRecipe) {
+        self.favoriteRecipeNameLabel.text = recipe.label
+        self.favoriteRecipeIngredientsLabel.text = recipe.ingredientLines
+        self.favoriteRecipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
+        
+        if let imageUrl = recipe.image, let savedImage = CoreDataHelper.shared.loadImageFromDiskWith(fileName: imageUrl) {
+            self.favoriteRecipeImage.image = savedImage
+        } else {
+            self.favoriteRecipeImage.image = UIImage(named: "defaultImageName")
+        }
+    }
 }
+
