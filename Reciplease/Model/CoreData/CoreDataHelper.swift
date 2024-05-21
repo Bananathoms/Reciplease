@@ -79,7 +79,7 @@ class CoreDataHelper {
     /// - Parameters:
     ///   - url: The URL of the image to download.
     ///   - fileName: The name to use for the saved image file.
-    private func downloadAndSaveImage(from url: URL, fileName: String) {
+    func downloadAndSaveImage(from url: URL, fileName: String) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil, let image = UIImage(data: data) else {
                 print("Failed to download image: \(error?.localizedDescription ?? "Unknown error")")
@@ -103,7 +103,7 @@ class CoreDataHelper {
 
     /// Deletes an image from the local file system.
     /// - Parameter fileName: The name of the image file to delete.
-    private func deleteImage(fileName: String) {
+    func deleteImage(fileName: String) {
         let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
         try? FileManager.default.removeItem(at: fileURL)
     }
@@ -119,7 +119,7 @@ class CoreDataHelper {
 
     /// Returns the URL of the documents directory.
     /// - Returns: The URL of the documents directory.
-    private func getDocumentsDirectory() -> URL {
+    func getDocumentsDirectory() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
 }
