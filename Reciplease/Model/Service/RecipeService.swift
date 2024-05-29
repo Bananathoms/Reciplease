@@ -13,7 +13,7 @@ class RecipeService {
     private let baseURL = "https://api.edamam.com/api/recipes/v2" /// The base URL of the recipe API.
     private let apiKey = "a7e8a98d74d018d5e4b6cf3dfa7e89a5" /// The application ID for API access.
     private let appId = "6c8e05e9" /// The API key for authentication with the recipe service.
-    private var session: Session  // Utilisation de `Session` d'Alamofire
+    private var session: Session
 
     // Initialisation avec une session Alamofire
     init(session: Session = .default) {
