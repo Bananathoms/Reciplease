@@ -21,6 +21,10 @@ class RecipeTableViewController: UITableViewController {
     /// Configures the view once it is loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "RecipeCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "RecipeCellIdentifier")
+        
         tableView.delegate = self
     }
     

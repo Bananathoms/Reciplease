@@ -19,6 +19,10 @@ class FavoriteTableViewController: UITableViewController {
     /// Sets up the view controller with necessary data loading and notification observation for updates.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "RecipeCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "RecipeCellIdentifier")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadFavoriteRecipes), name: .didUpdateFavorites, object: nil)
         self.loadFavoriteRecipes()
     }
@@ -53,19 +57,19 @@ class FavoriteTableViewController: UITableViewController {
     ///   - indexPath: An index path locating a row in tableView.
     /// - Returns: An object inheriting from UITableViewCell that the table view can use for the specified row.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCellIdentifier", for: indexPath) as? FavoriteTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCellIdentifier", for: indexPath) as? RecipeTableViewCell else {
             fatalError("The dequeued cell is not an instance of FavoriteTableViewCell.")
         }
 
         let recipe = self.favoriteRecipes[indexPath.row]
-        cell.favoriteRecipeNameLabel.text = recipe.label
-        cell.favoriteRecipeIngredientsLabel.text = recipe.ingredientLines
-        cell.favoriteRecipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
+        cell.recipeNameLabel.text = recipe.label
+        cell.recipeIngredientsLabel.text = recipe.ingredientLines
+        cell.recipeInfo.labelTimeRecipe.text = "\(recipe.totalTime) min"
 
         if let imageUrl = URL(string: recipe.image ?? "defaultImageUrl") {
-            cell.favoriteRecipeImage.loadImage(from: imageUrl)
+            cell.recipeImage.loadImage(from: imageUrl)
         } else {
-            cell.favoriteRecipeImage.image = UIImage(named: "defaultImageName")
+            cell.recipeImage.image = UIImage(named: "defaultImageName")
         }
         return cell
     }
